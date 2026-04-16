@@ -4,7 +4,7 @@ async function safeFetch(url, options) {
   try {
     return await fetch(url, options);
   } catch {
-    throw new Error("Cannot reach backend. Ensure FastAPI is running on http://localhost:8000.");
+    throw new Error(`Cannot reach backend at ${API_BASE}. Check VITE_API_BASE and backend status.`);
   }
 }
 

@@ -9,7 +9,7 @@ from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session
 
 from .ai import enrich_recipe
-from .config import settings
+from .config import allowed_frontend_origins, normalized_database_url, settings
 from .database import Base, engine, get_db
 from .models import Recipe
 from .schemas import (
@@ -28,8 +28,8 @@ app = FastAPI(title=settings.app_name)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.frontend_url, "http://127.0.0.1:5173"],
-    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
+    allow_origins=allowed_frontend_origins(),
+    allow_origin_regex=r"^https?://([a-zA-Z0-9-]+\.)?(localhost|127\.0\.0\.1|vercel\.app)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,6 +37,7 @@ app.add_middleware(
 
 
 def init_database(max_retries: int = 10, delay_seconds: int = 2) -> None:
+    db_url = normalized_database_url()
     for attempt in range(1, max_retries + 1):
         try:
             with engine.connect() as connection:
@@ -56,7 +57,7 @@ def init_database(max_retries: int = 10, delay_seconds: int = 2) -> None:
             else:
                 raise RuntimeError(
                     "Cannot connect to database at "
-                    f"{settings.database_url}. Verify DB settings and retry."
+                    f"{db_url}. Verify DB settings and retry."
                 ) from exc
 
 
