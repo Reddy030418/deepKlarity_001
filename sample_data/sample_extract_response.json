@@ -1,0 +1,38 @@
+﻿{
+  "title": "Classic Grilled Cheese",
+  "cuisine": "American",
+  "prep_time": "5 mins",
+  "cook_time": "10 mins",
+  "servings": "2",
+  "difficulty": "Easy",
+  "ingredients": [
+    "4 bread slices",
+    "2 tbsp butter",
+    "4 cheddar cheese slices"
+  ],
+  "instructions": [
+    "Butter one side of each bread slice.",
+    "Place cheese between unbuttered sides to make sandwiches.",
+    "Cook on a skillet until both sides are golden."
+  ],
+  "nutrition": {
+    "calories": "420 kcal",
+    "protein": "14 g",
+    "carbs": "28 g",
+    "fat": "27 g"
+  },
+  "substitutions": [
+    "Use sourdough instead of white bread",
+    "Use mozzarella instead of cheddar",
+    "Use olive oil instead of butter"
+  ],
+  "shopping_list": {
+    "Bakery": ["Bread"],
+    "Dairy": ["Cheddar cheese", "Butter"]
+  },
+  "related_recipes": [
+    "Tomato Soup",
+    "Pesto Cheese Toast",
+    "Spinach Quesadilla"
+  ]
+}

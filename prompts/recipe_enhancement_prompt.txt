@@ -1,0 +1,10 @@
+﻿Enhance the extracted recipe with practical cooking intelligence.
+Generate:
+- nutrition (calories, protein, carbs, fat) as approximate values
+- 3 substitutions
+- categorized shopping list
+- 3 related recipes
+Rules:
+- Be realistic and beginner-friendly.
+- Keep output concise.
+- Output valid JSON only.
